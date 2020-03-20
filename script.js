@@ -13,51 +13,59 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
 function generatePassword() {
-  var generatePasswordLength = prompt("Please choose password length from 8-128");
+  while(true){
+    var generatePasswordLength = prompt("Please choose password length from 8-128");
+     if(generatePasswordLength < 8 || generatePasswordLength > 128){
+       alert("Try again!Please choose password length from 8-128");
+     }else {
+       break
+     }
+    }
   var generatePasswordLow = confirm("Do you want lowercase?");
   var generatePasswordUpp = confirm("Do you want uppercase?");
   var generatePasswordNum = confirm("Do you want number?");
-  var generatePasswordSpe = confirm("Do you want special characters?");};
-
-  var lowerCase ="abcdefghijklmnopqrstuvwxyz";
-  var uppercase ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var passNumber = "012345678";
-  var specialCharac = "~!@#$%^&*()-_=+";
-
-  var content =""
+  var generatePasswordSpe = confirm("Do you want special characters?");
 
 
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var passNumber = "012345678";
+var specialCharac = "~!@#$%^&*()-_=+";
 
-  if(generatePasswordLow === true){
-      content += lowerCase;
-  }
-
-  if(generatePasswordUpp === true){
-    content += upperCase;
-  }
-
-  if(generatePasswordNum === true){
-    content += passNumber;
-}
-if(generatePasswordSpe === true){
-   content += specialCharac;
-}
-
-   for (var i = 0; i < generatePasswordLength;i++){
-       var Password = content.charAt(Math.floor(Math.random()* generatePasswordLength))
-       console.log(password)
-    }
-
-// }
-  // generatePassword();
-  // while (generatePassword.length<8 ||generatePassword.length>128){
-  //   prompt("Try again!lease choose password length from 8-128")
-  // }
+var content = ""
 
 
-// 1.random function to generate a random number between 8-128  ver length
-// for() 0-length
+if (generatePasswordLow === true) {
+  content = content + (lowerCase[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
+};
 
-// generate numbers? generate chacters?
+if (generatePasswordUpp === true) {
+  content = content + (upperCase[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
+};
+
+if (generatePasswordNum === true) {
+  content= content + (passNumber[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
+};
+
+if (generatePasswordSpe === true) {
+  content= content + (specialCharac[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
+};
+
+var password = ""
+
+for (var i = 0; i < generatePasswordLength; i++) {
+  password = password + content[Math.floor(Math.random() * content.length)];
+
+};
+
+return password
+
+};
+
+
+
+
+
 
