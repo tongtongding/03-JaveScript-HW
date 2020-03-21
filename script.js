@@ -34,24 +34,32 @@ var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"
 var passNumber = ["0","1","2","3","4","5","6","7","8","9"];
 var specialCharac = ["~","!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
 
-var content = ""
+var content = [];
 
+if(generatePasswordLow===true){
+  for(i = 0; i < lowerCase.length; i++){
+    content.push(lowerCase[i]);
+  }
+}
 
-if (generatePasswordLow === true) {
-  content = content + (lowerCase[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
-};
+if(generatePasswordUpp===true){
+  for(i = 0; i < upperCase.length; i++){
+    content.push(upperCase[i]);
+  }
+}
 
-if (generatePasswordUpp === true) {
-  content = content + (upperCase[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
-};
+if(generatePasswordNum===true){
+    for(i = 0; i < passNumber.length; i++){
+      content.push(passNumber[i]);
+  }
+}
 
-if (generatePasswordNum === true) {
-  content= content + (passNumber[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
-};
+if(generatePasswordSpe===true){
+      for(i = 0; i < specialCharac.length; i++){
+        content.push(specialCharac[i]);
+  }
+}
 
-if (generatePasswordSpe === true) {
-  content= content + (specialCharac[Math.floor(Math.random() * parseInt(generatePasswordLength))]);
-};
 
 var password = ""
 
